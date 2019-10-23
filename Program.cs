@@ -9,11 +9,17 @@ namespace HttpClient {
 	class Program {
 		static void Main(string[] args) {
 			WebClient Connector = new WebClient();
+			Connector.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+
 
 			while(true) {
 				
 				Console.WriteLine(" Enter request type (GET/POST)");
 				Console.Write(" > ");
+
+				string address;
+				byte[] raw;
+				string result;
 
 				string line = Console.ReadLine();
 				switch(line.ToUpper()) {
@@ -21,11 +27,11 @@ namespace HttpClient {
 						Console.WriteLine(" Enter address");
 						Console.Write(" > ");
 
-						string address = Console.ReadLine();
-						if(!address.StartsWith("http://")) address = "http://" + address;
+						address = Console.ReadLine();
+						if(!address.Contains("://")) address = "http://" + address;
 
-						byte[] raw = Connector.DownloadData(address);
-						string result = BytesToString(raw);
+						raw = Connector.DownloadData(address);
+						result = BytesToString(raw);
 
 						Console.WriteLine();
 						Console.WriteLine(result);
@@ -33,6 +39,24 @@ namespace HttpClient {
 						break;
 
 					case "POST":
+						Console.WriteLine(" Enter address");
+						Console.Write(" > ");
+
+						address = Console.ReadLine();
+						if(!address.Contains("://")) address = "http://" + address;
+
+
+						Console.WriteLine(" Enter POST data");
+						Console.Write(" > ");
+
+						String data = Console.ReadLine();
+
+						raw = Connector.UploadData(address, Encoding.UTF8.GetBytes(data));
+						result = BytesToString(raw);
+
+						Console.WriteLine();
+						Console.WriteLine(result);
+						Console.WriteLine();
 						break;
 				}
 			}
