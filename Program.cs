@@ -8,9 +8,7 @@ namespace HttpClient {
 			WebClient Connector = new WebClient();
 			Connector.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
 
-
 			while(true) {
-
 				Console.WriteLine(" Enter request type (GET/POST)");
 				Console.Write(" > ");
 
@@ -41,7 +39,6 @@ namespace HttpClient {
 
 						address = Console.ReadLine();
 						if(!address.Contains("://")) address = "http://" + address;
-
 
 						Console.WriteLine(" Enter POST data");
 						Console.Write(" > ");
