@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace HttpClient {
 	class Program {
@@ -13,7 +10,7 @@ namespace HttpClient {
 
 
 			while(true) {
-				
+
 				Console.WriteLine(" Enter request type (GET/POST)");
 				Console.Write(" > ");
 
