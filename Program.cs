@@ -8,9 +8,25 @@ using System.Threading.Tasks;
 namespace HttpClient {
 	class Program {
 		static WebClient Connector;
-		static void Main(string[] args) {
+		static async void Main(string[] args) {
 			Connector = new WebClient();
 
+			while(true) {
+				Console.WriteLine(" Enter request type (GET/POST)");
+				Console.Write(" > ");
+
+				string line = Console.ReadLine();
+				switch(line.ToUpper()) {
+					case "GET":
+
+						break;
+
+					case "POST":
+						break;
+				}
+			}
 		}
+
+
 	}
 }
